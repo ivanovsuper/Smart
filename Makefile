@@ -5,8 +5,8 @@ MOCHA = .\node_modules\.bin\mocha
 test:
 	@SET NODE_ENV=test & $(MOCHA) -u tdd --require should --reporter $(REPORTER) --recursive $(TESTS)
 	@echo Done.
-test-cov: 
-	@SET APP_COV=1 & $(MOCHA) --require should --reporter html-cov  --recursive $(TESTS) > coverage.html 
+test-cov: app-cov
+	@SET APP_COV=1 & $(MOCHA) -u tdd --require should --reporter html-cov  --recursive $(TESTS) > coverage.html 
 	@echo Done.
 app-cov: clear
 	@jscoverage --no-highlight app app-cov		
